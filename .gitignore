@@ -136,4 +136,10 @@ tenacity==9.0.0
 # Nova Sonic Smithy SDK (required for bidirectional streaming)
 aws-sdk-bedrock-runtime
 smithy-core
-smithy-aws-core
+smithy-aws-corenode_modules/
+.next/
+.venv/
+
+node_modules/
+.next/
+.venv/
