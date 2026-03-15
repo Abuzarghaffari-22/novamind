@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Dark mode (default) */
+:root, .dark {
+  --font-display: 'Syne', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Ink scale */
+  --ink-50:  224 225 230;
+  --ink-100: 210 212 228;
+  --ink-200: 190 192 215;
+  --ink-300: 160 163 196;
+  --ink-400: 126 130 172;
+  --ink-500: 94 98 144;
+  --ink-600: 66 70 110;
+  --ink-700: 44 47 80;
+  --ink-800: 28 30 56;
+  --ink-900: 18 20 36;
+  --ink-950: 13 14 20;
+
+  /* Nova brand */
+  --nova-300: 160 172 250;
+  --nova-400: 129 150 248;
+  --nova-500: 99 112 241;
+  --nova-600: 78 90 218;
+  --nova-700: 60 70 192;
+  --nova-800: 44 52 160;
+  --nova-900: 28 34 112;
+  --nova-950: 14 17 64;
+
+  --accent-cyan: 34 211 238;
+
+  /* Glass surfaces */
+  --glass-bg:       rgba(26, 27, 36, 0.72);
+  --glass-border:   rgba(255, 255, 255, 0.06);
+  --glass-hover-bg: rgba(255, 255, 255, 0.04);
+
+  /* Nova glow */
+  --nova-glow-sm:  0 0 0 1px rgba(99,112,241,.2),  0 4px  16px rgba(99,112,241,.12);
+  --nova-glow-md:  0 0 0 1px rgba(99,112,241,.25), 0 8px  32px rgba(99,112,241,.20);
+  --nova-glow-lg:  0 0 0 1px rgba(99,112,241,.3),  0 16px 48px rgba(99,112,241,.25);
+  --nova-glow-orb: rgba(99, 112, 241, 0.35);
+
+  /* Elevation shadows */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.4);
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.35);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
+
+  --body-bg: #0d0e14;
+  --body-fg: #e0e1e6;
+}
+
+/* Light mode */
+.light {
+  --ink-50:  15 15 20;
+  --ink-100: 30 31 40;
+  --ink-200: 52 54 68;
+  --ink-300: 80 83 106;
+  --ink-400: 112 115 140;
+  --ink-500: 148 151 172;
+  --ink-600: 188 190 205;
+  --ink-700: 215 216 226;
+  --ink-800: 232 233 240;
+  --ink-900: 243 244 248;
+  --ink-950: 250 250 253;
+
+  --nova-300: 160 172 250;
+  --nova-400: 129 150 248;
+  --nova-500: 99 112 241;
+  --nova-600: 78 90 218;
+  --nova-700: 60 70 192;
+  --nova-800: 44 52 160;
+  --nova-900: 28 34 112;
+  --nova-950: 235 236 255;
+
+  --accent-cyan: 6 182 212;
+
+  --glass-bg:       rgba(255, 255, 255, 0.88);
+  --glass-border:   rgba(30, 30, 50, 0.09);
+  --glass-hover-bg: rgba(99, 112, 241, 0.04);
+
+  --nova-glow-sm:  0 0 0 1px rgba(99,112,241,.15), 0 2px  8px rgba(99,112,241,.1);
+  --nova-glow-md:  0 0 0 1px rgba(99,112,241,.2),  0 4px 16px rgba(99,112,241,.12);
+  --nova-glow-lg:  0 0 0 1px rgba(99,112,241,.25), 0 8px 24px rgba(99,112,241,.15);
+  --nova-glow-orb: rgba(99, 112, 241, 0.2);
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 2px 8px rgba(0,0,0,0.08), 0 6px 24px rgba(0,0,0,0.06);
+
+  --body-bg: #f7f7fb;
+  --body-fg: #0f0f14;
+}
+
+/* Base */
+* { box-sizing: border-box; padding: 0; margin: 0; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  background-color: var(--body-bg);
+  color:            var(--body-fg);
+  font-family:      var(--font-body);
+  font-size:        15px;
+  line-height:      1.6;
+  overflow-x:       hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(99,112,241,0.25); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(99,112,241,0.45); }
+
+.light ::-webkit-scrollbar-thumb { background: rgba(99,112,241,0.2); }
+.light ::-webkit-scrollbar-thumb:hover { background: rgba(99,112,241,0.4); }
+
+::selection { background: rgba(99,112,241,0.18); color: inherit; }
+.dark ::selection { background: rgba(99,112,241,0.35); color: #fff; }
+
+:focus-visible {
+  outline:        2px solid rgb(var(--nova-500));
+  outline-offset: 2px;
+  border-radius:  4px;
+}
+
+/* Components */
+@layer components {
+
+  .glass {
+    background:              var(--glass-bg);
+    border:                  1px solid var(--glass-border);
+    backdrop-filter:         blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+
+  .light .glass {
+    background:    var(--glass-bg);
+    border:        1px solid rgba(30, 30, 50, 0.1);
+    box-shadow:    var(--shadow-sm);
+    backdrop-filter: blur(12px) saturate(1.2);
+    -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  }
+
+  .glass-hover { transition: background 0.2s, border-color 0.2s, box-shadow 0.2s; }
+
+  .dark .glass-hover:hover {
+    background:   rgba(255,255,255,0.04);
+    border-color: rgba(99,112,241,0.3);
+  }
+
+  .light .glass-hover:hover {
+    background:   rgba(255,255,255,0.98);
+    border-color: rgba(99,112,241,0.25);
+    box-shadow:   var(--shadow-md);
+  }
+
+  .nova-glow {
+    box-shadow: var(--nova-glow-lg);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #a0b0ff 0%, #6370f1 45%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip:         text;
+  }
+
+  .light .text-gradient {
+    background: linear-gradient(135deg, #4e5cd0 0%, #6370f1 50%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip:         text;
+  }
+
+  .bg-grid {
+    background-image: radial-gradient(circle, rgba(var(--ink-700), 0.7) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .light .bg-grid {
+    background-image: radial-gradient(circle, rgba(180,182,200,0.6) 1px, transparent 1px);
+  }
+
+  .shimmer-line {
+    background: linear-gradient(
+      90deg,
+      rgba(var(--ink-700), 0)   0%,
+      rgba(var(--ink-700), 0.5) 50%,
+      rgba(var(--ink-700), 0)   100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  .light [data-sidebar] {
+    background: #ffffff;
+    border-right: 1px solid rgba(30,30,50,0.1);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .light input,
+  .light textarea {
+    background: #ffffff;
+    border-color: rgba(30,30,50,0.15);
+    color: rgb(var(--ink-50));
+  }
+
+  .light input::placeholder,
+  .light textarea::placeholder {
+    color: rgb(var(--ink-500));
+  }
+
+  .light input:focus,
+  .light textarea:focus {
+    border-color: rgb(var(--nova-500));
+    box-shadow: 0 0 0 3px rgba(99,112,241,0.1);
+  }
+
+  .nova-prose { @apply leading-relaxed; color: rgb(var(--ink-200)); }
+
+  .nova-prose h1, .nova-prose h2, .nova-prose h3 {
+    @apply font-display font-semibold mt-5 mb-2;
+    color: rgb(var(--ink-50));
+  }
+  .nova-prose h1 { @apply text-xl; }
+  .nova-prose h2 { @apply text-lg; }
+  .nova-prose h3 { @apply text-base; }
+  .nova-prose p  { @apply mb-3; }
+  .nova-prose ul, .nova-prose ol { @apply mb-3 pl-5; }
+  .nova-prose li { @apply mb-1; }
+  .nova-prose code {
+    @apply font-mono text-sm px-1.5 py-0.5 rounded;
+    background: rgb(var(--ink-800) / 0.7);
+    color: rgb(var(--accent-cyan));
+  }
+  .nova-prose pre {
+    @apply my-3 rounded-xl overflow-x-auto;
+    background: rgb(var(--ink-900));
+    border: 1px solid rgb(var(--ink-800) / 0.6);
+  }
+  .nova-prose pre code { @apply bg-transparent text-inherit px-0 py-0; }
+  .nova-prose a  { @apply underline underline-offset-2; color: rgb(var(--nova-400)); }
+  .nova-prose strong { @apply font-semibold; color: rgb(var(--ink-50)); }
+  .nova-prose blockquote {
+    @apply pl-4 italic my-3;
+    border-left: 2px solid rgb(var(--nova-500));
+    color: rgb(var(--ink-300));
+  }
+  .nova-prose table { @apply w-full text-sm my-3 border-collapse; }
+  .nova-prose th {
+    @apply font-semibold px-3 py-2 text-left;
+    background: rgb(var(--ink-800));
+    color: rgb(var(--ink-100));
+    border: 1px solid rgb(var(--ink-700));
+  }
+  .nova-prose td {
+    @apply px-3 py-2;
+    border: 1px solid rgb(var(--ink-800));
+    color: rgb(var(--ink-200));
+  }
+  .nova-prose hr { @apply my-4; border-color: rgb(var(--ink-800)); }
+
+  .light .nova-prose             { color: rgb(var(--ink-200)); }
+  .light .nova-prose h1,
+  .light .nova-prose h2,
+  .light .nova-prose h3          { color: rgb(var(--ink-50));  }
+  .light .nova-prose strong      { color: rgb(var(--ink-100)); }
+  .light .nova-prose code        { background: rgb(var(--nova-950)); color: rgb(var(--nova-700)); }
+  .light .nova-prose pre         { background: rgb(var(--ink-900)); border-color: rgb(var(--ink-800)); }
+  .light .nova-prose a           { color: rgb(var(--nova-600)); }
+  .light .nova-prose blockquote  { color: rgb(var(--ink-300)); }
+  .light .nova-prose th {
+    background: rgb(var(--ink-800));
+    color: rgb(var(--ink-100));
+    border-color: rgb(var(--ink-700));
+  }
+  .light .nova-prose td {
+    border-color: rgb(var(--ink-700));
+    color: rgb(var(--ink-200));
+  }
+}
+
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+.light .noise-overlay::before { opacity: 0.08; }
+
+.typing-cursor::after {
+  content: '▋';
+  animation: blink 1s step-end infinite;
+  color: rgb(var(--nova-500));
+  margin-left: 1px;
+}
+
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+              color 0.15s ease, box-shadow 0.25s ease !important;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0; }
+}

@@ -1,0 +1,139 @@
+# Environment variables — never commit these
+.env
+.env.*
+!.env.example
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+*.egg
+MANIFEST
+.eggs/
+
+# Data directories
+data/
+!data/.gitkeep
+
+# FAISS index files
+*.faiss
+*.index
+novamind_meta.json
+
+# Uploaded files
+uploads/
+*.pdf
+*.docx
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+.pyright/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.sw?
+
+# OS
+.DS_Store
+._*
+Thumbs.db
+
+# AWS
+.aws/
+credentials
+aws_credentials*
+
+# Docker
+*.override.yml
+docker-compose.override.yml
+
+# Temporary
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+
+# NovaMind Backend — Production Requirements
+# Install: pip install -r requirements.txt
+
+# Web framework
+fastapi==0.115.5
+uvicorn[standard]==0.32.1
+python-multipart==0.0.12
+websockets==13.1
+httpx==0.28.0
+aiofiles==24.1.0
+
+# AWS SDK
+# boto3 >= 1.37 required for Nova Sonic bidirectional streaming
+# awscrt provides the HTTP/2 transport layer
+boto3==1.42.64
+botocore==1.42.64
+awscrt
+
+# AI / LangChain
+langchain==0.3.10
+langchain-aws==0.2.7
+langchain-community==0.3.10
+
+# Vector store
+faiss-cpu==1.9.0
+numpy==1.26.4
+
+# Document processing
+Pillow==11.0.0
+PyPDF2==3.0.1
+
+# Config / validation
+python-dotenv==1.0.1
+pydantic==2.10.3
+pydantic-settings==2.6.1
+
+# Auth / security
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+
+# Observability
+structlog==24.4.0
+
+# Reliability
+tenacity==9.0.0
+
+# Nova Sonic Smithy SDK (required for bidirectional streaming)
+aws-sdk-bedrock-runtime
+smithy-core
+smithy-aws-core
