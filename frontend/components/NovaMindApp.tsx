@@ -16,7 +16,7 @@ import ChatInput        from "@/components/chat/ChatInput";
 import VoiceOrb         from "@/components/voice/VoiceOrb";
 import DocumentUpload   from "@/components/documents/DocumentUpload";
 import ImageAnalyzer    from "@/components/image/ImageAnalyzer";
-import VideoAnalyzer    from "@/components/video/VideoAnalyzer";   // ← VIDEO ADDED
+import VideoAnalyzer    from "@/components/video/VideoAnalyzer";   
 import Button           from "@/components/ui/Button";
 import StatCard         from "@/components/ui/StatCard";
 import ThemeToggle      from "@/components/ui/ThemeToggle";
@@ -25,16 +25,16 @@ import { cn }           from "@/lib/utils";
 import toast            from "react-hot-toast";
 import type { ActiveTab, VoiceTranscript } from "@/types";
 
-// ── Tab metadata ──────────────────────────────────────────────────────────
+
 const TAB_META: Record<ActiveTab, { title: string; desc: (x: unknown) => string }> = {
   chat:      { title: "AI Chat",          desc: (n) => `${n} messages`          },
   voice:     { title: "Voice Assistant",  desc: (s) => `Nova Sonic · ${s}`      },
   documents: { title: "Knowledge Base",   desc: () => ""                        },
   image:     { title: "Vision Analysis",  desc: () => "Nova Lite · multimodal"  },
-  video:     { title: "Video Analysis",   desc: () => "Nova Pro · multimodal"   },  // ← VIDEO ADDED
+  video:     { title: "Video Analysis",   desc: () => "Nova Pro · multimodal"   },  
 };
 
-// ═════════════════════════════════════════════════════════════════════════
+
 export default function NovaMindApp() {
   const [activeTab,     setActiveTab]     = useState<ActiveTab>("chat");
   const [sidebarClosed, setSidebarClosed] = useState(false);
@@ -56,14 +56,14 @@ export default function NovaMindApp() {
   useEffect(() => {
     if (activeTab === "documents")
       docs.loadKBData().catch(() => toast.error("Failed to load KB"));
-  }, [activeTab]); // eslint-disable-line
+  }, [activeTab]); 
 
   useEffect(() => {
     if (voiceResponse && !voice.isConnected) {
       voice.connect();
       toast.success("🔊 Voice responses ON — Nova Sonic will speak every reply");
     }
-  }, [voiceResponse]); // eslint-disable-line
+  }, [voiceResponse]); 
 
   useEffect(() => {
     if (!voiceResponse || !voice.isConnected) return;
@@ -94,7 +94,7 @@ export default function NovaMindApp() {
   return (
     <div className="flex h-screen overflow-hidden bg-ink-950 text-ink-100">
 
-      {/* Ambient FX */}
+    
       <div className="fixed inset-0 pointer-events-none overflow-hidden" aria-hidden>
         <div className="absolute -top-40 left-1/3 w-[700px] h-[700px] rounded-full bg-nova-950/50 blur-[140px]" />
         <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full bg-accent-cyan/[0.04] blur-[120px]" />
@@ -106,7 +106,7 @@ export default function NovaMindApp() {
 
       <div className="flex-1 flex flex-col min-w-0 relative overflow-hidden">
 
-        {/* ── Header ─────────────────────────────────────────────── */}
+      
         <motion.header
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0,   opacity: 1 }}
@@ -176,7 +176,7 @@ export default function NovaMindApp() {
           </div>
         </motion.header>
 
-        {/* Voice response banner */}
+     
         <AnimatePresence>
           {voiceResponse && activeTab === "chat" && (
             <motion.div
@@ -204,7 +204,7 @@ export default function NovaMindApp() {
           )}
         </AnimatePresence>
 
-        {/* ── Tab panels ──────────────────────────────────────────── */}
+      
         <AnimatePresence mode="wait">
           <motion.div
             key={activeTab}
@@ -215,7 +215,7 @@ export default function NovaMindApp() {
             className="flex-1 overflow-hidden flex flex-col"
           >
 
-            {/* ══ CHAT ════════════════════════════════════════════ */}
+
             {activeTab === "chat" && (
               <div className="flex flex-col h-full">
                 <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
@@ -235,7 +235,7 @@ export default function NovaMindApp() {
               </div>
             )}
 
-            {/* ══ VOICE ═══════════════════════════════════════════ */}
+          
             {activeTab === "voice" && (
               <div className="flex h-full">
                 <div className="flex-1 flex flex-col items-center justify-center gap-6 p-8 overflow-y-auto">
@@ -329,7 +329,7 @@ export default function NovaMindApp() {
               </div>
             )}
 
-            {/* ══ DOCUMENTS ═══════════════════════════════════════ */}
+
             {activeTab === "documents" && (
               <div className="flex h-full overflow-hidden">
                 <div className="w-80 shrink-0 border-r border-ink-800/50 p-5 overflow-y-auto">
@@ -413,12 +413,12 @@ export default function NovaMindApp() {
               </div>
             )}
 
-            {/* ══ IMAGE ═══════════════════════════════════════════ */}
+
             {activeTab === "image" && (
               <div className="flex-1 overflow-hidden p-5"><ImageAnalyzer /></div>
             )}
 
-            {/* ══ VIDEO ═══════════════════════════════════════════ */}  {/* ← VIDEO ADDED */}
+           
             {activeTab === "video" && (
               <div className="flex-1 overflow-hidden p-5"><VideoAnalyzer /></div>
             )}
