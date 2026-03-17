@@ -17,12 +17,12 @@ import toast         from "react-hot-toast";
 let ReactMarkdown: React.ComponentType<{ children: string; remarkPlugins?: unknown[] }> | null = null;
 let remarkGfm: unknown = null;
 try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
+
   ReactMarkdown = require("react-markdown").default;
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  
   remarkGfm     = require("remark-gfm").default;
 } catch {
-  // react-markdown not installed — SimpleMarkdown fallback will be used
+ 
 }
 
 function SimpleMarkdown({ text }: { text: string }) {
@@ -113,7 +113,7 @@ function useSpinKeyframe() {
     `;
     document.head.appendChild(style);
     return () => {
-      // Leave the style — safe to keep across re-mounts
+     
     };
   }, []);
 }
